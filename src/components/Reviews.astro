@@ -1,0 +1,476 @@
+---
+// Reviews.astro
+const reviews = [
+  {
+    id: 1,
+    name: "Mohammed Ashraf",
+    location: "Tirur, Malappuram",
+    rating: 5,
+    review: "Excellent service provider! They helped me choose the right purifier for my home and handled the installation professionally.",
+    date: "1 weeks ago",
+    avatar: "MA"
+  },
+  {
+    id: 2,
+    name: "Priya N Satheesh",
+    location: "Kottakkal",
+    rating: 4,
+    review: "Very happy with their support! They suggested a perfect model based on our water quality and budget. Smooth installation and quick service.",
+    date: "2 weeks ago",
+    avatar: "PNS"
+  },
+  {
+    id: 3,
+    name: "Mohammed Ali",
+    location: "Tirur",
+    rating: 5,
+    review: "Knowledgeable staff and fast delivery. They don't manufacture the product, but they know exactly what suits your needs. Great experience.",
+    date: "3 weeks ago",
+    avatar: "MA"
+  },
+  {
+    id: 4,
+    name: "Sheeja Manoj",
+    location: "Purathoor",
+    rating: 4,
+    review: "Bought a purifier through them last month. Installation was neat, and they explained everything well. Service is really trustworthy.",
+    date: "1 month ago",
+    avatar: "SM"
+  },
+  {
+    id: 5,
+    name: "Vinod M",
+    location: "B.P Angadi",
+    rating: 5,
+    review: "Best after-sales service I've seen in Tirur. Even though they don't make the product, their maintenance support is excellent.",
+    date: "1 year ago",
+    avatar: "VM"
+  }
+  ,
+  {
+    id: 6,
+    name: "Sooraj K",
+    location: "Tanur",
+    rating: 5,
+    review: "Best after sales service I've seen in Malappuram. Even though they don't make the product, their maintenance support is excellent.",
+    date: "2 year ago",
+    avatar: "SK"
+  }
+];
+---
+
+<section class="reviews-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">What Our Customers Say</h2>
+      <p class="section-subtitle">
+        Trusted by hundreds of satisfied customers across Malappuram
+      </p>
+    </div>
+
+    <div class="reviews-grid">
+      {reviews.map((review, index) => (
+        <div class="review-card" data-aos={`fade-up`} data-aos-delay={index * 100}>
+          <div class="review-header">
+            <div class="user-info">
+              <div class="avatar">
+                <span>{review.avatar}</span>
+              </div>
+              <div class="user-details">
+                <h4 class="user-name">{review.name}</h4>
+                <p class="user-location">{review.location}</p>
+              </div>
+            </div>
+            <div class="review-meta">
+              <div class="rating">
+                {[...Array(review.rating)].map((_, i) => (
+                  <span class="star">⭐</span>
+                ))}
+              </div>
+              <span class="review-date">{review.date}</span>
+            </div>
+          </div>
+          
+          <div class="review-content">
+            <p class="review-text">"{review.review}"</p>
+          </div>
+          
+          
+        </div>
+      ))}
+    </div>
+
+    <div class="reviews-stats">
+      <div class="stat-item">
+        <div class="stat-number">4.9</div>
+        <div class="stat-label">Average Rating</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1000+</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Satisfaction Rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+ 
+  .reviews-section {
+    padding: 5rem 1rem;
+    background: var(--gradient-2);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reviews-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, var(--primary-blue)20 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, var(--accent-cyan)15 0%, transparent 40%);
+    opacity: 0.08;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--gradient-1);
+    border-radius: 2px;
+  }
+
+  .section-subtitle {
+    font-size: 1.2rem;
+    color: var(--slate-100);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .review-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .review-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-1);
+    transition: left 0.6s ease;
+  }
+
+  .review-card:hover::before {
+    left: 0;
+  }
+
+  .review-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(14, 165, 233, 0.2);
+    border-color: var(--primary-blue);
+  }
+
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gradient-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: var(--white);
+    font-size: 1.1rem;
+  }
+
+  .user-details {
+    flex: 1;
+  }
+
+  .user-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+
+  .user-location {
+    font-size: 0.9rem;
+    color: var(--slate-100);
+    opacity: 0.7;
+  }
+
+  .review-meta {
+    text-align: right;
+  }
+
+  .rating {
+    margin-bottom: 0.5rem;
+  }
+
+  .star {
+    font-size: 1rem;
+    margin-left: 2px;
+  }
+
+  .review-date {
+    font-size: 0.85rem;
+    color: var(--slate-100);
+    opacity: 0.6;
+  }
+
+  .review-content {
+    margin-bottom: 1.5rem;
+  }
+
+  .review-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--slate-100);
+    font-style: italic;
+    position: relative;
+  }
+
+  .review-text::before {
+    content: '"';
+    font-size: 4rem;
+    color: var(--primary-blue);
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    opacity: 0.3;
+    font-family: serif;
+  }
+
+  .review-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .verified-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-cyan);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .verified-badge svg {
+    color: var(--accent-cyan);
+  }
+
+  .reviews-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 2rem;
+    background: var(--slate-800);
+    border-radius: 15px;
+    border: 1px solid var(--slate-700);
+    transition: all 0.3s ease;
+  }
+
+  .stat-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-blue);
+    box-shadow: 0 15px 30px rgba(14, 165, 233, 0.15);
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    color: var(--slate-100);
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .reviews-section {
+      padding: 3rem 1rem;
+    }
+
+    .reviews-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .review-card {
+      padding: 1.5rem;
+    }
+
+    .review-header {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .review-meta {
+      text-align: left;
+    }
+
+    .reviews-stats {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-item {
+      padding: 1.5rem;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .reviews-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .review-card {
+      padding: 1.25rem;
+    }
+
+    .user-info {
+      gap: 0.75rem;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+  }
+
+  /* Animation Classes */
+  [data-aos] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  [data-aos].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  // Simple AOS (Animate On Scroll) implementation
+  class SimpleAOS {
+    constructor() {
+      this.elements = document.querySelectorAll('[data-aos]');
+      this.init();
+    }
+
+    init() {
+      this.createObserver();
+      this.observe();
+    }
+
+    createObserver() {
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = entry.target.getAttribute('data-aos-delay') || 0;
+            setTimeout(() => {
+              entry.target.classList.add('aos-animate');
+            }, delay);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      });
+    }
+
+    observe() {
+      this.elements.forEach(element => {
+        this.observer.observe(element);
+      });
+    }
+  }
+
+  // Initialize when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    new SimpleAOS();
+  });
+</script>

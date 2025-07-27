@@ -1,16 +1,328 @@
 ---
-
+import Banner from "../components/Banner.astro";
+import Hero from "../components/Hero.astro";
+import Products from "../components/Prodcuts.astro"; // consider renaming file to fix typo
+import About from "../components/About.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import Loader from "../components/Loader.astro";
+import Reviews from "../components/Reviews.astro";
+import '../style/global.css';
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Pioneer Agencies - Your trusted provider for water purifiers and home solutions." />
+    <meta name="keywords" content="Pioneer Agencies, water purifier, home solutions, Kerala, Tirur" />
+    <meta name="author" content="Pioneer Agencies" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Pioneer Agencies | Water Purifiers Sales & Services</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   
+  </head>
+ 
+  <body class="loading">
+    <!-- Main Content -->
+    <div id="main-content" class="main-content">
+      <Hero />
+      <Banner />
+      <div id="products-section" class="page-section">
+        <Products />
+      </div>
+      <div id="about-section" class="page-section">
+        <About />
+      </div>
+      <Reviews />
+      <div id="contact-section" class="page-section">
+        <Contact />
+      </div>
+      <Footer />
+    </div>
+
+    <!-- Loader Overlay - Only shows when loading -->
+    <div id="loader-overlay" class="loader-overlay">
+      <Loader />
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m18 15-6-6-6 6"/>
+      </svg>
+    </button>
+
+    <style>
+      /* Prevent scrolling only while loading */
+      body.loading {
+        overflow: hidden;
+        height: 100vh;
+      }
+
+      body.loaded {
+        overflow: auto;
+        height: auto;
+      }
+
+      /* Main content is always visible but interaction disabled while loading */
+      .main-content {
+        opacity: 1;
+        visibility: visible;
+        transition: none;
+      }
+
+      body.loading .main-content {
+        pointer-events: none;
+        user-select: none;
+      }
+
+      body.loaded .main-content {
+        pointer-events: auto;
+        user-select: auto;
+      }
+
+      /* Loader overlay */
+      .loader-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        opacity: 1;
+        visibility: visible;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .loader-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Scroll to top button */
+      .scroll-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+        background: var(--primary-blue, #0ea5e9);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+        z-index: 1000;
+      }
+
+      .scroll-to-top:hover {
+        background: var(--secondary-blue, #0284c7);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+      }
+
+      .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .scroll-to-top svg {
+        margin-top: 2px;
+      }
+
+      /* Page sections for smooth scrolling */
+      .page-section {
+        scroll-margin-top: 80px;
+      }
+
+      /* Hide scroll to top while loading */
+      body.loading .scroll-to-top {
+        display: none;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .scroll-to-top {
+          bottom: 1.5rem;
+          right: 1.5rem;
+          width: 45px;
+          height: 45px;
+        }
+      }
+    </style>
+
+    <script>
+      // Initialize page state
+      let isLoading = true;
+      let loadingComplete = false;
+      
+      // Page loading logic
+      function initializeLoader() {
+        const loaderOverlay = document.getElementById('loader-overlay');
+        const body = document.body;
+        
+        // Ensure body has loading class
+        body.classList.add('loading');
+        body.classList.remove('loaded');
+        
+        // Handle page load
+        const handlePageLoad = () => {
+          loadingComplete = true;
+          
+          // Minimum loading time for better UX
+          setTimeout(() => {
+            finishLoading();
+          }, 1200); // 1.2s minimum loading time
+        };
+        
+        // Function to finish loading
+        const finishLoading = () => {
+          if (!loadingComplete) return;
+          
+          isLoading = false;
+          
+          // Hide loader overlay
+          if (loaderOverlay) {
+            loaderOverlay.classList.add('hidden');
+          }
+          
+          // Enable scrolling and interactions
+          body.classList.remove('loading');
+          body.classList.add('loaded');
+          
+          // Remove loader from DOM after animation
+          setTimeout(() => {
+            if (loaderOverlay) {
+              loaderOverlay.remove();
+            }
+          }, 800);
+          
+          // Initialize other features
+          initializeScrollFeatures();
+        };
+        
+        // Check if page is already loaded
+        if (document.readyState === 'complete') {
+          handlePageLoad();
+        } else {
+          window.addEventListener('load', handlePageLoad);
+        }
+        
+        // Fallback - force finish loading after max time
+        setTimeout(() => {
+          if (isLoading) {
+            loadingComplete = true;
+            finishLoading();
+          }
+        }, 5000); // 5s maximum loading time
+      }
+      
+      // Initialize scroll features after loading
+      function initializeScrollFeatures() {
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        // Show/hide scroll to top button
+        const handleScroll = () => {
+          if (isLoading) return;
+          
+          if (window.pageYOffset > 300) {
+            scrollToTopBtn?.classList.add('visible');
+          } else {
+            scrollToTopBtn?.classList.remove('visible');
+          }
+        };
+        
+        window.addEventListener('scroll', handleScroll);
+        
+        // Scroll to top functionality
+        scrollToTopBtn?.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.addEventListener('click', (e) => {
+          if (isLoading) return;
+          
+          const target = e.target.closest('a[href^="#"]');
+          if (target) {
+            e.preventDefault();
+            const targetId = target.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          }
+        });
+      }
+      
+      // Performance optimization - Lazy load images
+      function initializeLazyLoading() {
+        const images = document.querySelectorAll('img[data-src]');
+        
+        if ('IntersectionObserver' in window) {
+          const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                observer.unobserve(img);
+              }
+            });
+          });
+          
+          images.forEach(img => imageObserver.observe(img));
+        } else {
+          // Fallback for older browsers
+          images.forEach(img => {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+          });
+        }
+      }
+      
+      // Initialize everything when DOM is ready
+      document.addEventListener('DOMContentLoaded', () => {
+        initializeLoader();
+        initializeLazyLoading();
+      });
+      
+      // Handle page visibility changes
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          // Page is hidden
+        } else {
+          // Page is visible again
+          if (isLoading && loadingComplete) {
+            // If we missed the load event, finish loading
+            setTimeout(() => {
+              if (isLoading) {
+                isLoading = false;
+                document.body.classList.remove('loading');
+                document.body.classList.add('loaded');
+                const overlay = document.getElementById('loader-overlay');
+                if (overlay) overlay.classList.add('hidden');
+              }
+            }, 100);
+          }
+        }
+      });
+    </script>
+  </body>
 </html>

@@ -1,0 +1,402 @@
+---
+// ProductList.astro
+interface Product {
+  id: number;
+  name: string;
+  model: string;
+  price: number;
+  originalPrice?: number;
+  image: string;
+  rating: number;
+  reviewCount: number;
+}
+
+// Sample product data - replace with your actual data
+const products: Product[] = [
+  {
+    id: 1,
+    name: "Kent Grand Star",
+    model: "RO Water Purifier",
+    price: 20000.00,
+    originalPrice: 21000.00,
+    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.9fJHkOl-qTzxbDKEzO-YOQAAAA%3Fr%3D0%26pid%3DApi&f=1&ipt=10cfb243f2e81f70da80a6d8e6a0422f37e3967a35607a6e40382cd38d2dccc3",//"https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhealthchanging.com%2Fwp-content%2Fuploads%2F2018%2F12%2Fhealth-2.png&f=1&nofb=1&ipt=176e5fedfe5925b233ad40e1e2f10fa06a71102ea6d76802414909677bc97429",
+    rating: 4.5,
+    reviewCount: 1247
+  },
+  {
+    id: 2,
+    name: "Kent Pearl",
+    model: "RO Water Purifier",
+    price: 20000.00,
+    image:  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fchoicebestforyou.com%2Fwp-content%2Fuploads%2F2020%2F06%2FBest-water-purifier-for-home-in-india-22.jpg&f=1&nofb=1&ipt=39b52cc57bdab1e950935816fc419a1e507f07de1d3220728c2bb56a61419d1e" ,//"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F5.imimg.com%2Fdata5%2FSELLER%2FDefault%2F2023%2F10%2F356978340%2FGD%2FDR%2FVV%2F133071111%2Fkent-pearl-water-purifier-500x500.png&f=1&nofb=1&ipt=dc14590c46ade11b3efd9a14eadd73cd0d00c6b265fb68ab1828a0da7c4d0b6c",
+    rating: 4.8,
+    reviewCount: 856
+  },
+  {
+    id: 3,
+    name: "Kent Ultra Storage",
+    model: "UV water purifier",
+    price: 12000.00,
+    originalPrice: 15000.00,
+    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F71Bnmz7QxtL._SL1500_.jpg&f=1&nofb=1&ipt=fe16ab350ac7d822f21a07b38d612a8681f9b44c28a97c67765d5514a7514a77",
+    rating: 4.1,
+    reviewCount: 2103
+  },
+  {
+    id: 4,
+    name: "Kent Maxx",
+    model: "Uv Water Purifier",
+    price: 10000.00,
+    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kent.co.in%2Fblog%2Fwp-content%2Fuploads%2F2016%2F12%2FKent-Maxx.jpg&f=1&nofb=1&ipt=0b50eee7beba75fdde1780da34cffba78f654717d8c36b88cd6bc66462200c55",
+    rating: 4.2,
+    reviewCount: 445
+  },
+  {
+    id: 5,
+    name: "RO sysmtem",
+    model: "RO+sediment+carbon",
+    price: 21000.99,
+    originalPrice: 25999.00,
+    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F4.imimg.com%2Fdata4%2FFY%2FKT%2FMY-25762992%2Fkent-elite-ii-50lph-water-purifiers-500x500.jpg&f=1&nofb=1&ipt=939a7508376ea8b8f7e7199efcb8175a7ecd7fa33f16fdb7232b4f0533a58f67",
+    rating: 4.3,
+    reviewCount: 678
+  },
+    {
+        id: 6,
+        name: "Kenr Wonder",
+        model: "RO+UV+UF",
+        price: 19999.00,
+        image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F5.imimg.com%2Fdata5%2FAI%2FBA%2FMY-50544796%2Fkent-ro-water-purifier-500x500.jpg&f=1&nofb=1&ipt=5964aaccf385df955bbec25cd038b00b38f2ad3e56dc23f38ef4e2d3d3544ba3",
+        rating: 4.7,
+        reviewCount: 1023
+    },
+     {
+        id: 7,
+        name: "SafeDrops Water Purifier",
+        model: "RO+UV+UF",
+        price: 19900.00,
+        image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F5.imimg.com%2Fdata5%2FSELLER%2FDefault%2F2021%2F3%2FMY%2FAW%2FJX%2F113914460%2F16-500x500.jpg&f=1&nofb=1&ipt=e6afe3d69bcc558f7d1b1dd4f76e0b2e1c8f9c6f4ec17dea562382a8a8342b2e",
+        rating: 4.7,
+        reviewCount: 1023
+    },
+    {
+        id: 8,
+        name: "Full water Treatment System",
+        model: "Sediment + Carbon + others",
+        price: 20000.00,
+        image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F5.imimg.com%2Fdata5%2FPQ%2FSK%2FMY-11081281%2Fwater-purifier-cylinder-500x500.jpg&f=1&nofb=1&ipt=2e3789f691b94aeb577832668bd64e657ccc09e9cfdbf6cce290a025d7964e60",
+        rating: 4.7,
+        reviewCount: 1023
+    },
+
+
+
+
+]
+
+function generateStars(rating: number) {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 !== 0;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+  
+  return {
+    full: fullStars,
+    half: hasHalfStar,
+    empty: emptyStars
+  };
+}
+---
+<div>
+  <div class="section-header">
+      <h2 class="section-title">Products</h2>
+      <p class="section-subtitle">
+      Explore our wide range of reliable water purifier models available
+      </p>
+    </div>
+
+<div class="product-grid">
+  {products.map((product) => {
+    const stars = generateStars(product.rating);
+    return (
+      <div class="product-card">
+        <div class="product-image">
+          <img src={product.image} alt={product.name} loading="lazy" />
+        </div>
+        
+        <div class="product-info">
+          <h3 class="product-name">{product.name}</h3>
+          <p class="product-model">{product.model}</p>
+          
+          <div class="rating">
+            <div class="stars">
+              {Array.from({ length: stars.full }, (_, i) => (
+                <span class="star filled">★</span>
+              ))}
+              {stars.half && <span class="star half">★</span>}
+              {Array.from({ length: stars.empty }, (_, i) => (
+                <span class="star">★</span>
+              ))}
+            </div>
+            <span class="rating-text">({product.reviewCount})</span>
+          </div>
+          
+          <div class="price-container">
+            <span class="current-price">₹{product.price}</span>
+            {product.originalPrice && (
+              <span class="original-price">₹{product.originalPrice}</span>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  })}
+</div>
+</div>
+<style>
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.product-info {
+  padding: 1.25rem;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-model {
+  font-size: 0.9rem;
+  color: #718096;
+  margin: 0 0 1rem 0;
+  font-weight: 500;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stars {
+  display: flex;
+  gap: 0.1rem;
+}
+
+.star {
+  font-size: 1rem;
+  color: #e2e8f0;
+  transition: color 0.2s ease;
+}
+
+.star.filled {
+  color: #fbbf24;
+}
+
+
+ .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--gradient-1);
+    border-radius: 2px;
+  }
+
+  .section-subtitle {
+    font-size: 1.2rem;
+    color: var(--slate-100);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+
+.star.half {
+  background: linear-gradient(90deg, #fbbf24 50%, #e2e8f0 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.rating-text {
+  font-size: 0.85rem;
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.rating-text:hover {
+  text-decoration: underline;
+}
+
+.price-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.current-price {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #b91c1c;
+}
+
+.original-price {
+  font-size: 1rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  
+  .product-image {
+    height: 200px;
+  }
+  
+  .product-info {
+    padding: 1rem;
+  }
+  
+  .product-name {
+    font-size: 1rem;
+  }
+  
+  .current-price {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  
+  .product-image {
+    height: 160px;
+  }
+  
+  .product-info {
+    padding: 0.75rem;
+  }
+  
+  .product-name {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 3;
+  }
+  
+  .product-model {
+    font-size: 0.8rem;
+  }
+  
+  .current-price {
+    font-size: 1.1rem;
+  }
+  
+  .stars {
+    gap: 0.05rem;
+  }
+  
+  .star {
+    font-size: 0.9rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .product-card {
+    background: #1f2937;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .product-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+  
+  .product-name {
+    color: #f9fafb;
+  }
+  
+  .product-model {
+    color: #9ca3af;
+  }
+  
+  .product-image {
+    background: #374151;
+  }
+}
+</style>

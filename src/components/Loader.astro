@@ -1,0 +1,785 @@
+
+<html lang="en">
+
+<body>
+    <div class="loader-wrapper" id="purifierLoader">
+        <!-- Animated Background -->
+        <div class="background-animation">
+            <div class="bubble" style="--delay: 0s; --size: 8px; --left: 15%;"></div>
+            <div class="bubble" style="--delay: 2s; --size: 12px; --left: 75%;"></div>
+            <div class="bubble" style="--delay: 4s; --size: 6px; --left: 45%;"></div>
+            <div class="bubble" style="--delay: 6s; --size: 10px; --left: 85%;"></div>
+            <div class="bubble" style="--delay: 8s; --size: 14px; --left: 25%;"></div>
+        </div>
+
+        <div class="loader-container">
+            <!-- Brand Header -->
+            <div class="brand-header">
+                <div class="logo-container">
+                    <div class="logo-drop">
+                        <div class="drop-core"></div>
+                        <div class="drop-glow"></div>
+                    </div>
+                </div>
+                <h1 class="brand-name">Pioneer Agencies</h1>
+                <p class="brand-tagline">Your journey to cleaner, safer water begins here</p>
+            </div>
+
+            <!-- Main Purification System -->
+            <div class="purification-system">
+                <!-- Input Pipe with Dirty Water -->
+                <div class="pipe-section input-pipe">
+                    <div class="pipe-body">
+                        <div class="water-stream dirty-stream">
+                            <div class="water-particle dirty"></div>
+                            <div class="water-particle dirty"></div>
+                            <div class="water-particle dirty"></div>
+                            <div class="impurity-particle"></div>
+                            <div class="impurity-particle"></div>
+                        </div>
+                    </div>
+                    <div class="pipe-label">Contaminated Water</div>
+                </div>
+
+                <!-- Multi-Stage Filter Chamber -->
+                <div class="filter-chamber">
+                    <div class="chamber-body">
+                        <div class="filter-stage stage-1">
+                            <div class="filter-media"></div>
+                            <div class="filtration-effect"></div>
+                        </div>
+                        <div class="filter-stage stage-2">
+                            <div class="filter-media"></div>
+                            <div class="filtration-effect"></div>
+                        </div>
+                        <div class="filter-stage stage-3">
+                            <div class="filter-media"></div>
+                            <div class="filtration-effect"></div>
+                        </div>
+                        <div class="filter-stage stage-4">
+                            <div class="filter-media"></div>
+                            <div class="filtration-effect"></div>
+                        </div>
+                    </div>
+                    <div class="chamber-glow"></div>
+                    <div class="processing-indicator">
+                        <div class="indicator-light"></div>
+                        <span>Purifying</span>
+                    </div>
+                </div>
+
+                <!-- Output Pipe with Clean Water -->
+                <div class="pipe-section output-pipe">
+                    <div class="pipe-body">
+                        <div class="water-stream clean-stream">
+                            <div class="water-particle clean"></div>
+                            <div class="water-particle clean"></div>
+                            <div class="water-particle clean"></div>
+                            <div class="sparkle"></div>
+                            <div class="sparkle"></div>
+                        </div>
+                    </div>
+                    <div class="pipe-label">Pure Water</div>
+                </div>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="metrics-display">
+                <div class="metric">
+                    <div class="metric-value" data-target="99.9">0</div>
+                    <div class="metric-label">% Purity</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" data-target="15">0</div>
+                    <div class="metric-label">L/min Flow</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" data-target="7">0</div>
+                    <div class="metric-label">pH Level</div>
+                </div>
+            </div>
+
+            <!-- Loading Progress -->
+            <div class="loading-section">
+                <div class="progress-container">
+                    <div class="progress-track">
+                        <div class="progress-bar"></div>
+                        <div class="progress-wave"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span class="loading-message">Initializing Purification System</span>
+                        <span class="progress-percentage">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        :root {
+            --primary: #0066cc;
+            --secondary: #00a8ff;
+            --accent: #00d4ff;
+            --success: #00ff88;
+            --warning: #ffaa00;
+            --danger: #ff4757;
+            --dark: #1a1a1a;
+            --darker: #0d0d0d;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --gray: #6c757d;
+            --dirty-water: #8b4513;
+            --clean-water: #00d4ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            background: var(--darker);
+        }
+
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+
+        /* Background Animation */
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            width: var(--size);
+            height: var(--size);
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.1;
+            left: var(--left);
+            animation: bubbleRise 12s infinite linear;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes bubbleRise {
+            0% {
+                transform: translateY(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .loader-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Brand Header */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .logo-drop {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .drop-core {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: dropPulse 3s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        .drop-glow {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0.3;
+            filter: blur(10px);
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        .brand-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-tagline {
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        @keyframes dropPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+
+        /* Purification System */
+        .purification-system {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .pipe-section {
+            position: relative;
+            z-index: 2;
+        }
+
+        .pipe-body {
+            width: 200px;
+            height: 40px;
+            background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #34495e;
+            box-shadow: 
+                inset 0 2px 10px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .water-stream {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            transform: translateY(-50%);
+            overflow: hidden;
+        }
+
+        .water-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: flowRight 2s infinite linear;
+        }
+
+        .water-particle.dirty {
+            background: var(--dirty-water);
+            box-shadow: 0 0 5px rgba(139, 69, 19, 0.5);
+        }
+
+        .water-particle.clean {
+            background: var(--clean-water);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+        }
+
+        .water-particle:nth-child(1) { top: 2px; animation-delay: 0s; }
+        .water-particle:nth-child(2) { top: 6px; animation-delay: 0.3s; }
+        .water-particle:nth-child(3) { top: 10px; animation-delay: 0.6s; }
+
+        .impurity-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #654321;
+            border-radius: 50%;
+            animation: flowRight 2.5s infinite linear;
+        }
+
+        .impurity-particle:nth-child(4) { top: 4px; left: -50px; animation-delay: 0.2s; }
+        .impurity-particle:nth-child(5) { top: 12px; left: -70px; animation-delay: 0.8s; }
+
+        .sparkle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 50%;
+            animation: sparkleFlow 1.5s infinite linear;
+        }
+
+        .sparkle:nth-child(4) { top: 3px; animation-delay: 0.1s; }
+        .sparkle:nth-child(5) { top: 13px; animation-delay: 0.4s; }
+
+        @keyframes flowRight {
+            0% { left: -20px; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { left: 220px; opacity: 0; }
+        }
+
+        @keyframes sparkleFlow {
+            0% { left: -10px; opacity: 0; transform: scale(0); }
+            20% { opacity: 1; transform: scale(1); }
+            80% { opacity: 1; transform: scale(1); }
+            100% { left: 210px; opacity: 0; transform: scale(0); }
+        }
+
+        .pipe-label {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--light);
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        /* Filter Chamber */
+        .filter-chamber {
+            position: relative;
+            margin: 0 -20px;
+            z-index: 3;
+        }
+
+        .chamber-body {
+            width: 120px;
+            height: 150px;
+            background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+            box-shadow: 
+                0 0 30px rgba(0, 102, 204, 0.4),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .filter-stage {
+            width: 100%;
+            height: 25%;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .filter-stage:last-child {
+            border-bottom: none;
+        }
+
+        .filter-media {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage-1 .filter-media { background: linear-gradient(90deg, #666 0%, #999 100%); }
+        .stage-2 .filter-media { background: linear-gradient(90deg, #444 0%, #777 100%); }
+        .stage-3 .filter-media { background: linear-gradient(90deg, #222 0%, #555 100%); }
+        .stage-4 .filter-media { background: linear-gradient(90deg, #000 0%, #333 100%); }
+
+        .filtration-effect {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.6) 50%, transparent 100%);
+            animation: filtrationSweep 4s infinite ease-in-out;
+        }
+
+        .stage-1 .filtration-effect { animation-delay: 0s; }
+        .stage-2 .filtration-effect { animation-delay: 0.5s; }
+        .stage-3 .filtration-effect { animation-delay: 1s; }
+        .stage-4 .filtration-effect { animation-delay: 1.5s; }
+
+        @keyframes filtrationSweep {
+            0%, 20% { left: -100%; }
+            50% { left: 0%; }
+            80%, 100% { left: 100%; }
+        }
+
+        .chamber-glow {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 20px;
+            opacity: 0.2;
+            filter: blur(15px);
+            animation: chamberGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes chamberGlow {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.05); }
+        }
+
+        .processing-indicator {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .indicator-light {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: indicatorBlink 1s ease-in-out infinite;
+        }
+
+        @keyframes indicatorBlink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.8); }
+        }
+
+        /* Metrics Display */
+        .metrics-display {
+            display: flex;
+            gap: 3rem;
+            margin-top: 1rem;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Loading Section */
+        .loading-section {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .progress-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .progress-wave {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+            animation: progressWave 2s infinite linear;
+            opacity: 0;
+        }
+
+        @keyframes progressWave {
+            0% { left: -50px; opacity: 0; }
+            50% { opacity: 1; }
+            100% { left: 100%; opacity: 0; }
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .loading-message {
+            color: var(--light);
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .progress-percentage {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .loader-container {
+                gap: 2rem;
+                padding: 1rem;
+            }
+
+            .brand-name {
+                font-size: 2rem;
+            }
+
+            .purification-system {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .pipe-body {
+                width: 150px;
+                height: 30px;
+            }
+
+            .chamber-body {
+                width: 100px;
+                height: 120px;
+            }
+
+            .metrics-display {
+                gap: 2rem;
+            }
+
+            .metric-value {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-name {
+                font-size: 1.5rem;
+            }
+
+            .pipe-body {
+                width: 120px;
+                height: 25px;
+            }
+
+            .chamber-body {
+                width: 80px;
+                height: 100px;
+            }
+
+            .metrics-display {
+                gap: 1.5rem;
+            }
+
+            .metric-value {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+
+    <script>
+        class WaterPurifierLoader {
+            constructor() {
+                this.progress = 0;
+                this.targetProgress = 100;
+                this.isLoading = true;
+                this.messages = [
+                    "Initializing Purification System",
+                    "Activating Multi-Stage Filters",
+                    "Processing Water Quality",
+                    "Optimizing Flow Rate",
+                    "Finalizing Purification"
+                ];
+                this.currentMessageIndex = 0;
+                
+                this.init();
+            }
+
+            init() {
+                this.startProgressAnimation();
+                this.startMetricsAnimation();
+                this.startMessageRotation();
+                this.autoHide();
+            }
+
+            startProgressAnimation() {
+                const progressBar = document.querySelector('.progress-bar');
+                const progressPercentage = document.querySelector('.progress-percentage');
+                const progressWave = document.querySelector('.progress-wave');
+                
+                const updateProgress = () => {
+                    if (this.progress < this.targetProgress && this.isLoading) {
+                        this.progress += Math.random() * 3 + 1;
+                        this.progress = Math.min(this.progress, this.targetProgress);
+                        
+                        progressBar.style.width = `${this.progress}%`;
+                        progressPercentage.textContent = `${Math.floor(this.progress)}%`;
+                        
+                        if (this.progress > 10) {
+                            progressWave.style.opacity = '1';
+                        }
+                        
+                        setTimeout(updateProgress, 100 + Math.random() * 200);
+                    }
+                };
+                
+                setTimeout(updateProgress, 500);
+            }
+
+            startMetricsAnimation() {
+                const metrics = document.querySelectorAll('.metric-value');
+                
+                metrics.forEach((metric, index) => {
+                    const target = parseFloat(metric.dataset.target);
+                    let current = 0;
+                    
+                    const updateMetric = () => {
+                        if (current < target) {
+                            const increment = target / 50;
+                            current += increment;
+                            current = Math.min(current, target);
+                            
+                            if (index === 0) {
+                                metric.textContent = current.toFixed(1);
+                            } else {
+                                metric.textContent = Math.floor(current);
+                            }
+                            
+                            setTimeout(updateMetric, 50 + Math.random() * 100);
+                        }
+                    };
+                    
+                    setTimeout(updateMetric, 1000 + index * 500);
+                });
+            }
+
+            startMessageRotation() {
+                const messageElement = document.querySelector('.loading-message');
+                
+                const rotateMessage = () => {
+                    if (this.isLoading) {
+                        messageElement.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            this.currentMessageIndex = (this.currentMessageIndex + 1) % this.messages.length;
+                            messageElement.textContent = this.messages[this.currentMessageIndex];
+                            messageElement.style.opacity = '1';
+                        }, 300);
+                        
+                        setTimeout(rotateMessage, 2000);
+                    }
+                };
+                
+                setTimeout(rotateMessage, 2000);
+            }
+
+            autoHide() {
+                setTimeout(() => {
+                    this.hideLoader();
+                }, 6000);
+            }
+
+            hideLoader() {
+                this.isLoading = false;
+                const loader = document.getElementById('purifierLoader');
+                
+                if (loader) {
+                    loader.style.opacity = '0';
+                    loader.style.transition = 'opacity 0.8s ease-out';
+                    
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 800);
+                }
+            }
+        }
+
+        // Initialize loader when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = new WaterPurifierLoader();
+            
+            // Export for manual control
+            window.hidePurifierLoader = () => loader.hideLoader();
+        });
+
+        // Also initialize on window load as fallback
+        window.addEventListener('load', () => {
+            if (!window.purifierLoaderInitialized) {
+                new WaterPurifierLoader();
+                window.purifierLoaderInitialized = true;
+            }
+        });
+    </script>
+</body>
+</html>

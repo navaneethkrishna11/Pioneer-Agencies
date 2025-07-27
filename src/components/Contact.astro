@@ -1,0 +1,344 @@
+---
+// Contact information - replace with your actual data
+const contactInfo = {
+  location: "Mumbai, Maharashtra, India",
+  address: "M.I Building ,Opposite Chithrasagar,Pan Bazar, Tirur, Malappuram - 676101",
+  email: "pioneertirur@gmail.com",
+  phone: "+91 9745704780, +91 9745704840"
+};
+---
+
+<section class="contact-section">
+  <div class="contact-container">
+    <div class="contact-header">
+      <h2>Contact Us</h2>
+      <p>Get in touch with us for any inquiries</p>
+    </div>
+    
+    <div class="contact-grid">
+    
+
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9,22 9,12 15,12 15,22"/>
+          </svg>
+        </div>
+        <div class="contact-content">
+          <h3>Address</h3>
+          <p>{contactInfo.address}</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div class="contact-content">
+          <h3>Email</h3>
+          <p>
+            <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <div class="contact-content">
+          <h3>Phone</h3>
+          <p>
+            <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}>{contactInfo.phone}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+       <div class="cta-section">
+                <h3 class="cta-title">Ready for Pure Water?</h3>
+                <p class="cta-description">
+                   Purity meets trust : Tirur’s No.1 choice for advanced water purifiers and reliable support
+                </p>
+                <p class="cta-button">
+                    Start Your Pure Water Journey with us Today!
+                </p>
+            </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding: 4rem 1rem;
+    background: var(--gradient-2);
+    position: relative;
+  }
+
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, var(--primary-blue) 0%, transparent 70%);
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  .contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .contact-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .contact-header p {
+    font-size: 1.1rem;
+    color: var(--slate-100);
+    opacity: 0.8;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .contact-item {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-1);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .contact-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-blue);
+    box-shadow: 0 10px 30px rgba(14, 165, 233, 0.2);
+  }
+
+  .contact-item:hover::before {
+    transform: scaleX(1);
+  }
+
+  .contact-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--gradient-1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .contact-item:hover .contact-icon {
+    transform: scale(1.1);
+  }
+
+  .contact-icon svg {
+    width: 24px;
+    height: 24px;
+    color: var(--white);
+  }
+
+  .contact-content {
+    flex: 1;
+  }
+
+  .contact-content h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-content p {
+    font-size: 0.95rem;
+    color: var(--slate-100);
+    opacity: 0.9;
+    line-height: 1.5;
+  }
+
+  .contact-content a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .contact-content a:hover {
+    color: var(--primary-blue);
+    text-decoration: underline;
+  }
+
+     /* Call to Action */
+        .cta-section {
+            text-align: center;
+            background: var(--gradient-primary);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 10%;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cta-section.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: rgba(14, 165, 233, 0.3);
+            backdrop-filter: blur(15px);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 10;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+            background: rgba(14, 165, 233, 0.5);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .contact-section {
+      padding: 3rem 1rem;
+    }
+
+    .contact-header h2 {
+      font-size: 2rem;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      padding: 1.5rem;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .contact-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .contact-content h3 {
+      font-size: 1.1rem;
+    }
+
+    .contact-content p {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-section {
+      padding: 2rem 1rem;
+    }
+
+    .contact-header {
+      margin-bottom: 2rem;
+    }
+
+    .contact-header h2 {
+      font-size: 1.8rem;
+    }
+
+    .contact-item {
+      padding: 1.25rem;
+    }
+  }
+</style>

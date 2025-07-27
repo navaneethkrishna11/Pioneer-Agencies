@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pioneer Agencies:Sales & Service of water purifiers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+     
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--gradient-2);
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+            animation: bgFloat 20s ease-in-out infinite;
+        }
+
+        /* Modern Navbar */
+        .navbar {
+            position:relative;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            background: transparent;     /* rgba(15, 23, 42, 0.8) */
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid  rgba(255, 255, 255, 0.05); 
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -15px;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            transform: translateY(-50%);
+            animation: pulse 2s infinite;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-item a {
+            color: var(--slate-100);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item a:hover {
+            color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        .nav-item a::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-item a:hover::before {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 1rem 0 4rem;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: slideUp 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            color: var(--accent-cyan);
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: var(--slate-100);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .dynamic-text {
+            color: var(--accent-cyan);
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .dynamic-text::after {
+            content: '';
+            position: absolute;
+            right: -2px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent-cyan);
+            animation: blink 1s infinite;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--glass-border);
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: var(--glass);
+            border-color: var(--accent-cyan);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--slate-100);
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        /* Water Purification Visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideUp 1s ease-out 0.3s both;
+        }
+
+        .purification-container {
+            position: relative;
+            width: 500px;
+            height: 600px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .water-source {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 40px;
+            background: var(--gradient-2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--glass-border);
+        }
+
+        .water-source::before {
+            content: 'H₂O';
+            color: var(--accent-cyan);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .contaminated-flow {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 120px;
+            background: linear-gradient(180deg, #ef4444, #dc2626);
+            border-radius: 3px;
+            animation: flowAnimation 3s infinite ease-in-out;
+            opacity: 0.8;
+        }
+
+        .filtration-stages {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 300px;
+        }
+
+        .filter-stage {
+            width: 100%;
+            height: 60px;
+            margin-bottom: 30px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-stage::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            opacity: 0.6;
+            animation: filterProcess 4s infinite ease-in-out;
+        }
+
+        .filter-stage:nth-child(1) { animation-delay: 0s; }
+        .filter-stage:nth-child(2) { animation-delay: 1s; }
+        .filter-stage:nth-child(3) { animation-delay: 2s; }
+
+        .filter-label {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--white);
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 10;
+        }
+
+        .pure-water-outlet {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 20px;
+            background: var(--gradient-1);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
+        }
+
+        .pure-flow {
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 80px;
+            background: var(--gradient-1);
+            border-radius: 4px;
+            animation: pureFlowAnimation 3s infinite ease-in-out 2.5s;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.8);
+        }
+
+        /* Floating Elements */
+        .floating-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+
+        .floating-particle:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+        .floating-particle:nth-child(2) { top: 30%; right: 20%; animation-delay: 2s; }
+        .floating-particle:nth-child(3) { top: 60%; left: 10%; animation-delay: 4s; }
+        .floating-particle:nth-child(4) { bottom: 20%; right: 15%; animation-delay: 1s; }
+        .floating-particle:nth-child(5) { top: 80%; left: 25%; animation-delay: 3s; }
+
+        /* Animations */
+        @keyframes bgFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-30px, -30px) rotate(120deg); }
+            66% { transform: translate(30px, -30px) rotate(240deg); }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes flowAnimation {
+            0% { opacity: 0.8; height: 120px; }
+            50% { opacity: 1; height: 140px; }
+            100% { opacity: 0.8; height: 120px; }
+        }
+
+        @keyframes pureFlowAnimation {
+            0% { opacity: 0.8; height: 80px; }
+            50% { opacity: 1; height: 100px; }
+            100% { opacity: 0.8; height: 80px; }
+        }
+
+        @keyframes filterProcess {
+            0% { left: -100%; opacity: 0; }
+            50% { opacity: 1; }
+            100% { left: 100%; opacity: 0; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); opacity: 0.7; }
+            50% { transform: translateY(-30px); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+                text-align: center;
+            }
+            
+            .purification-container {
+                width: 400px;
+                height: 500px;
+            }
+            
+            .filtration-stages {
+                width: 320px;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero {
+                padding: 6rem 0 2rem;
+            }
+            
+            .hero-container {
+                padding: 0 1rem;
+                gap: 3rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+                gap: 2rem;
+            }
+            
+            .purification-container {
+                width: 320px;
+                height: 400px;
+                padding: 1.5rem;
+            }
+            
+            .filtration-stages {
+                width: 280px;
+                height: 200px;
+            }
+            
+            .filter-stage {
+                height: 45px;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-container {
+                padding: 0 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .purification-container {
+                width: 280px;
+                height: 350px;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Fallback for older browsers */
+        @supports not (backdrop-filter: blur(10px)) {
+            .navbar {
+                background: rgba(15, 23, 42, 0.95);
+            }
+            
+            .purification-container, .filter-stage {
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+
+    <!-- Modern Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Pioneer Agencies </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home">Home</a></li>
+                <li class="nav-item"><a href="#products-section">Products</a></li>
+                <li class="nav-item"><a href="#about-section">About</a></li>
+                <li class="nav-item"><a href="#contact-section">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Floating Particles -->
+        <div class="floating-particle"></div>
+        <div class="floating-particle"></div>
+        <div class="floating-particle"></div>
+        <div class="floating-particle"></div>
+        <div class="floating-particle"></div>
+
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                     Trusted Water Solutions for Every Home
+                </div>
+                
+                <h1 class="hero-title">
+                     The Future of <br>
+                      Safe Water is Here!
+                </h1>
+                
+                <p class="hero-subtitle">
+                   Delivering clean, safe water and reliable service to every doorstep. 
+                  <span class="dynamic-text" id="dynamicText">Purity. Service. Trust.</span>
+                </p>
+                
+                <div class="hero-buttons">
+                    <button class="btn-primary">Explore More</button>
+                    <button class="btn-secondary">Watch Demo</button>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">99.99%</span>
+                        <span class="stat-label">Purity Level</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1k+</span>
+                        <span class="stat-label">Homes Protected</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100% </span>
+                        <span class="stat-label">Customer Satisfaction</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="purification-container">
+                    <div class="water-source"></div>
+                    <div class="contaminated-flow"></div>
+                    
+                    <div class="filtration-stages">
+                        <div class="filter-stage">
+                            <div class="filter-label">Sediment Filter</div>
+                        </div>
+                        <div class="filter-stage">
+                            <div class="filter-label">Carbon Block</div>
+                        </div>
+                        <div class="filter-stage">
+                            <div class="filter-label">RO Membrane</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pure-water-outlet"></div>
+                    <div class="pure-flow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Dynamic text rotation
+        const dynamicTexts = [
+            '99.99% Pure Water',
+            'Advanced Filtration',
+            'Smart Technology',
+            'Instant Purification',
+            'Crystal Clean Results'
+        ];
+        
+      
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.8s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Add interactive hover effects
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+            button.addEventListener('mouseenter', function(this: HTMLButtonElement) {
+                this.style.transform = 'translateY(-3px) scale(1.02)';
+            });
+            
+            button.addEventListener('mouseleave', function(this: HTMLButtonElement) {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

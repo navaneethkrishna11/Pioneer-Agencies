@@ -1,0 +1,427 @@
+
+<body>
+    <div class="about-section">
+        <div class="container">
+            <!-- About Content -->
+            <div class="about-content animate-on-scroll">
+                <h2 class="section-title">About Us</h2>
+                <p class="description">
+                    Established in 2007 in Tirur, Malappuram, we began our journey as a dedicated provider of water purifiers and today, we proudly serve a growing base of satisfied clients across the region. We specialize in RO and UV water filtration systems, offering a wide range of models to suit different budgets and household needs. Our product line includes top brands like Kent and SafeDrops, ensuring reliable and efficient purification.
+                </p>
+                <p class="description">
+                    Before suggesting any system, we personally test the water quality using our own tools. For severe cases, we recommend lab testing to better understand the issue. Based on the results, we help customers choose the right purifier. In addition to sales, we provide complete after-sales service for Kent systems, and offer full water treatment solutions including iron removal plants and cylinder-based filtration units for homes and buildings.
+                </p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid animate-on-scroll">
+                <div class="stat-card">
+                    <div class="stat-number" data-count="1000">0</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="250">0</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="799">0</div>
+                    <div class="stat-label">Services Provided</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="5">0</div>
+                    <div class="stat-label">Team Members</div>
+                </div>
+            </div>
+
+            <!-- Services Section -->
+            <div class="services-section animate-on-scroll">
+                <h3 class="services-title">Our Services</h3>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">💧</div>
+                        <h4>Sales</h4>
+                        <p>Professional water purifier sales solutions tailored to your needs with expert consultation and quality products.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔧</div>
+                        <h4>Services</h4>
+                        <p>Comprehensive maintenance and repair services for all water purification systems with trained technicians.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🛠️</div>
+                        <h4>Spare Parts</h4>
+                        <p>Genuine spare parts and components for all major water purifier brands with quick delivery service.</p>
+                    </div>
+                    <!-- <div class="service-card">
+                        <div class="service-icon">🏪</div>
+                        <h4>Retail</h4>
+                        <p>Complete retail solutions with showroom experience and wide range of water treatment products.</p>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- Products Marquee -->
+            <div class="marquee-section animate-on-scroll">
+              
+                <div class="marquee-container">
+                    <div class="marquee-content">
+                        <span class="marquee-item">Kent Grand RO+UV+UF+TDS Controller</span>
+                        <span class="marquee-item">Kent Supreme RO+UV+UF+TDS Controller</span>
+                        <span class="marquee-item">Kent Pearl RO+UV+UF+TDS Controller</span>
+                        <span class="marquee-item">SafeDrops UV Water Purifier</span>
+                        <span class="marquee-item">Iron Removal Plant</span>
+                        <span class="marquee-item">Whole House Water Filtration System</span>
+                        <span class="marquee-item">Kent Elite Plus Commercial RO System</span>
+                        <span class="marquee-item">SafeDrops RO System</span>
+                        <span class="marquee-item">Kent Grand RO+UV+UF+TDS Controller</span>
+                        <span class="marquee-item">Kent Supreme RO+UV+UF+TDS Controller</span>
+                        <span class="marquee-item">Kent Pearl RO+UV+UF+TDS Controller</span>
+                        <span class="marquee-item">SafeDrops UV Water Purifier</span>
+                        <span class="marquee-item">Iron Removal Plant</span>
+                        <span class="marquee-item">Whole House Water Filtration System</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+    
+        .about-section {
+            min-height: 100vh;
+            padding: 4rem 1rem;
+            background: var(--gradient-2);
+            position: relative;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, var(--primary-blue)20 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, var(--accent-cyan)20 0%, transparent 50%);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-content {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: var(--slate-100);
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            text-align: justify;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .stat-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem 1rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--slate-100);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .services-section {
+            margin-bottom: 5rem;
+        }
+
+        .services-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--slate-800);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid var(--slate-700);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--primary-blue);
+            box-shadow: 0 25px 50px rgba(14, 165, 233, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--slate-100);
+            line-height: 1.6;
+            
+        }
+
+        .marquee-section {
+            text-align: center;
+        }
+
+        .marquee-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            background: rgba(14, 165, 233, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem 0;
+            position: relative;
+        }
+
+        .marquee-content {
+            display: flex;
+            animation: marquee 40s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee-item {
+            display: inline-block;
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0 3rem;
+            white-space: nowrap;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-section {
+                padding: 2rem 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .marquee-item {
+                padding: 0 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .description {
+                text-align: left;
+            }
+        }
+    </style>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate counters when stats section is visible
+                    if (entry.target.classList.contains('stats-grid')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation function
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        if (current > target) current = target;
+                        counter.textContent = Math.floor(current) + (target > 100 ? '+' : '');
+                        requestAnimationFrame(updateCounter);
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Add stagger effect to service cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>

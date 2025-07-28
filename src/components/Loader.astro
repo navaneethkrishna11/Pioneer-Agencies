@@ -1,642 +1,624 @@
 ---
-// ModernWaterLoader.astro
+// WaterPurifierLoader.astro
 ---
 
-<div class="water-loader-screen" id="waterLoader">
-  <!-- Ambient Background -->
-  <div class="ambient-bg">
-    <div class="gradient-orb orb-1"></div>
-    <div class="gradient-orb orb-2"></div>
+<div class="purifier-loader-wrapper" id="purifierLoader">
+  <!-- Simplified Background Animation -->
+  <div class="bg-animation">
+    <div class="bubble" style="--delay: 0s; --size: 8px; --left: 15%;"></div>     
+    <div class="bubble" style="--delay: 3s; --size: 12px; --left: 75%;"></div>
+    <div class="bubble" style="--delay: 6s; --size: 6px; --left: 45%;"></div>
   </div>
 
-  <div class="loader-content">
-    <!-- Brand Identity -->
-    <div class="brand-identity">
-      <div class="logo-symbol">
-        <svg viewBox="0 0 100 100" class="water-icon">
-          <defs>
-            <linearGradient id="waterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#0066cc;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-          <path d="M50 10 C30 30, 30 50, 50 70 C70 50, 70 30, 50 10 Z" fill="url(#waterGrad)" />
-          <circle cx="50" cy="45" r="3" fill="rgba(255,255,255,0.8)" opacity="0">
-            <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
-          </circle>
-        </svg>
+  <div class="purifier-container">
+    <!-- Brand Header -->
+    <div class="brand-section">
+      <div class="logo-wrapper">
+        <div class="water-drop">
+          <div class="drop-inner"></div>
+        </div>
       </div>
-      <h1 class="brand-title">Pioneer Agencies</h1>
-      <p class="brand-subtitle">Advanced Water Purification</p>
+      <h1 class="company-name">Pioneer Agencies</h1>
+      <p class="company-tagline">Your journey to cleaner, safer water begins here</p>
     </div>
 
-    <!-- Main Purification Visualization -->
-    <div class="purification-viz">
-      <!-- Water Flow Container -->
-      <div class="flow-container">
-        <!-- Input Stream -->
-        <div class="water-stream input-stream">
-          <div class="stream-line">
-            <div class="water-drops">
-              <div class="drop contaminated"></div>
-              <div class="drop contaminated"></div>
-              <div class="drop contaminated"></div>
-            </div>
-          </div>
-          <span class="stream-label">Contaminated</span>
-        </div>
-
-        <!-- Central Filter Core -->
-        <div class="filter-core">
-          <div class="core-outer">
-            <div class="core-inner">
-              <div class="filter-ring ring-1"></div>
-              <div class="filter-ring ring-2"></div>
-              <div class="filter-ring ring-3"></div>
-              <div class="core-center">
-                <div class="pulse-dot"></div>
-              </div>
-            </div>
-          </div>
-          <div class="processing-waves">
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
+    <!-- Main Purification System -->
+    <div class="purify-system">
+      <!-- Input Pipe -->
+      <div class="pipe-container input-section">
+        <div class="pipe-main">
+          <div class="water-flow dirty-flow">
+            <div class="flow-particle dirty-particle"></div>
+            <div class="flow-particle dirty-particle"></div>
+            <div class="impurity-dot"></div>
           </div>
         </div>
+        <div class="pipe-title">Contaminated Water</div>
+      </div>
 
-        <!-- Output Stream -->
-        <div class="water-stream output-stream">
-          <div class="stream-line">
-            <div class="water-drops">
-              <div class="drop purified"></div>
-              <div class="drop purified"></div>
-              <div class="drop purified"></div>
-            </div>
+      <!-- Filter Chamber -->
+      <div class="filter-unit">
+        <div class="chamber-main">
+          <div class="filter-layer layer-1">
+            <div class="layer-media"></div>
+            <div class="clean-sweep"></div>
           </div>
-          <span class="stream-label">Purified</span>
+          <div class="filter-layer layer-2">
+            <div class="layer-media"></div>
+            <div class="clean-sweep"></div>
+          </div>
+          <div class="filter-layer layer-3">
+            <div class="layer-media"></div>
+            <div class="clean-sweep"></div>
+          </div>
+          <div class="filter-layer layer-4">
+            <div class="layer-media"></div>
+            <div class="clean-sweep"></div>
+          </div>
+        </div>
+        <div class="status-light">
+          <div class="light-dot"></div>
+          <span>Purifying</span>
         </div>
       </div>
 
-      <!-- Performance Indicators -->
-      <div class="performance-grid">
-        <div class="perf-card">
-          <div class="perf-value" data-target="99.9">0</div>
-          <div class="perf-unit">% Pure</div>
+      <!-- Output Pipe -->
+      <div class="pipe-container output-section">
+        <div class="pipe-main">
+          <div class="water-flow clean-flow">
+            <div class="flow-particle clean-particle"></div>
+            <div class="flow-particle clean-particle"></div>
+            <div class="shine-dot"></div>
+          </div>
         </div>
-        <div class="perf-card">
-          <div class="perf-value" data-target="24">0</div>
-          <div class="perf-unit">L/min</div>
-        </div>
-        <div class="perf-card">
-          <div class="perf-value" data-target="7.2">0</div>
-          <div class="perf-unit">pH</div>
-        </div>
+        <div class="pipe-title">Pure Water</div>
       </div>
     </div>
 
-    <!-- Minimal Progress Bar -->
-    <div class="progress-area">
-      <div class="progress-track">
-        <div class="progress-glow"></div>
-        <div class="progress-fill"></div>
+    <!-- Performance Metrics -->
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number" data-target="99.9">0</div>
+        <div class="stat-text">% Purity</div>
       </div>
-      <div class="status-row">
-        <span class="status-message">Initializing system</span>
-        <span class="status-percent">0%</span>
+      <div class="stat-item">
+        <div class="stat-number" data-target="15">0</div>
+        <div class="stat-text">L/min Flow</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="7">0</div>
+        <div class="stat-text">pH Level</div>
+      </div>
+    </div>
+
+    <!-- Loading Progress -->
+    <div class="progress-section">
+      <div class="progress-wrapper">
+        <div class="progress-line">
+          <div class="progress-fill"></div>
+        </div>
+        <div class="progress-info">
+          <span class="status-text">Initializing Purification System</span>
+          <span class="percent-text">0%</span>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <style>
-  .water-loader-screen {
+  :root {
+    --primary-blue: #0066cc;
+    --accent-cyan: #00d4ff;
+    --success-green: #00ff88;
+    --dark-bg: #0a0a0a;
+    --darker-bg: #1a1a2e;
+    --light-text: #f8f9fa;
+    --gray-text: #6c757d;
+    --dirty-brown: #8b4513;
+    --clean-blue: #00d4ff;
+    --white: #ffffff;
+  }
+
+  .purifier-loader-wrapper {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(135deg, #0a0f1a 0%, #1a1a2e 40%, #16213e 100%);
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 50%, #16213e 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 10000;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    overflow: hidden;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  /* Ambient Background */
-  .ambient-bg {
+  /* Optimized Background Animation - Reduced particles */
+  .bg-animation {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     pointer-events: none;
   }
 
-  .gradient-orb {
+  .bubble {
     position: absolute;
+    bottom: -50px;
+    width: var(--size);
+    height: var(--size);
+    background: radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%);
     border-radius: 50%;
-    opacity: 0.03;
-    animation: orbFloat 20s ease-in-out infinite;
+    opacity: 0.1;
+    left: var(--left);
+    animation: bubbleUp 15s infinite linear;
+    animation-delay: var(--delay);
+    will-change: transform;
   }
 
-  .orb-1 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, #00d4ff 0%, transparent 70%);
-    top: -200px;
-    right: -200px;
-    animation-delay: 0s;
-  }
-
-  .orb-2 {
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, #0066cc 0%, transparent 70%);
-    bottom: -150px;
-    left: -150px;
-    animation-delay: 10s;
-  }
-
-  @keyframes orbFloat {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -20px) scale(1.1); }
-    66% { transform: translate(-20px, 30px) scale(0.9); }
-  }
-
-  .loader-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-    width: 100%;
-    max-width: 500px;
-    padding: 2rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  /* Brand Identity */
-  .brand-identity {
-    text-align: center;
-  }
-
-  .logo-symbol {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 1.5rem;
-  }
-
-  .water-icon {
-    width: 100%;
-    height: 100%;
-    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
-  }
-
-  .brand-title {
-    font-size: 2.4rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.03em;
-  }
-
-  .brand-subtitle {
-    font-size: 1rem;
-    color: #8892b0;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-  }
-
-  /* Purification Visualization */
-  .purification-viz {
-    width: 100%;
-  }
-
-  .flow-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2.5rem;
-    position: relative;
-  }
-
-  .water-stream {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-  }
-
-  .stream-line {
-    width: 120px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .water-drops {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: translateY(-50%);
-  }
-
-  .drop {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    animation: dropFlow 3s infinite linear;
-  }
-
-  .contaminated {
-    background: #d4774e;
-    box-shadow: 0 0 6px rgba(212, 119, 78, 0.6);
-  }
-
-  .purified {
-    background: #00d4ff;
-    box-shadow: 0 0 8px rgba(0, 212, 255, 0.8);
-  }
-
-  .input-stream .drop:nth-child(1) { animation-delay: 0s; }
-  .input-stream .drop:nth-child(2) { animation-delay: 1s; }
-  .input-stream .drop:nth-child(3) { animation-delay: 2s; }
-
-  .output-stream .drop:nth-child(1) { animation-delay: 0.5s; }
-  .output-stream .drop:nth-child(2) { animation-delay: 1.5s; }
-  .output-stream .drop:nth-child(3) { animation-delay: 2.5s; }
-
-  @keyframes dropFlow {
+  @keyframes bubbleUp {
     0% {
-      left: -6px;
+      transform: translateY(0) scale(0);
       opacity: 0;
     }
     10% {
-      opacity: 1;
+      opacity: 0.2;
     }
     90% {
-      opacity: 1;
+      opacity: 0.1;
     }
     100% {
-      left: 126px;
+      transform: translateY(-110vh) scale(1);
       opacity: 0;
     }
   }
 
-  .stream-label {
-    font-size: 0.75rem;
-    color: #8892b0;
-    font-weight: 500;
+  .purifier-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  /* Brand Section - Optimized */
+  .brand-section {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .logo-wrapper {
+    margin-bottom: 1rem;
+  }
+
+  .water-drop {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .drop-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: dropBeat 4s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .company-name {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .company-tagline {
+    color: var(--gray-text);
+    font-size: 0.8rem;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
 
-  /* Filter Core */
-  .filter-core {
+  @keyframes dropBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  /* Optimized Purification System */
+  .purify-system {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    max-width: 700px;
     position: relative;
-    display: flex;
-    align-items: center;
     justify-content: center;
   }
 
-  .core-outer {
-    width: 100px;
-    height: 100px;
-    border: 2px solid rgba(0, 212, 255, 0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .pipe-container {
     position: relative;
+    z-index: 2;
   }
 
-  .core-inner {
-    width: 70px;
-    height: 70px;
-    background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
+  .pipe-main {
+    width: 180px;
+    height: 35px;
+    background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+    border-radius: 18px;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
+    border: 2px solid #34495e;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
-  .filter-ring {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 212, 255, 0.3);
-    animation: ringPulse 4s ease-in-out infinite;
-  }
-
-  .ring-1 {
-    width: 40px;
-    height: 40px;
-    animation-delay: 0s;
-  }
-
-  .ring-2 {
-    width: 55px;
-    height: 55px;
-    animation-delay: 1.3s;
-  }
-
-  .ring-3 {
-    width: 70px;
-    height: 70px;
-    animation-delay: 2.6s;
-  }
-
-  @keyframes ringPulse {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 0.3;
-    }
-    50% {
-      transform: scale(1.2);
-      opacity: 0.6;
-    }
-  }
-
-  .core-center {
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .pulse-dot {
-    width: 8px;
-    height: 8px;
-    background: #00d4ff;
-    border-radius: 50%;
-    animation: dotPulse 2s ease-in-out infinite;
-    box-shadow: 0 0 12px rgba(0, 212, 255, 0.8);
-  }
-
-  @keyframes dotPulse {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.5);
-      opacity: 0.7;
-    }
-  }
-
-  .processing-waves {
+  .water-flow {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120px;
-    height: 120px;
-    pointer-events: none;
+    left: 0;
+    width: 100%;
+    height: 18px;
+    transform: translateY(-50%);
+    overflow: hidden;
   }
 
-  .wave {
+  .flow-particle {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    border: 2px solid rgba(0, 212, 255, 0.4);
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: waveExpand 3s ease-out infinite;
+    animation: flowMove 2.5s infinite linear;
+    will-change: transform;
   }
 
-  .wave:nth-child(1) { animation-delay: 0s; }
-  .wave:nth-child(2) { animation-delay: 1s; }
-  .wave:nth-child(3) { animation-delay: 2s; }
-
-  @keyframes waveExpand {
-    0% {
-      width: 20px;
-      height: 20px;
-      opacity: 1;
-    }
-    100% {
-      width: 120px;
-      height: 120px;
-      opacity: 0;
-    }
+  .dirty-particle {
+    background: var(--dirty-brown);
+    box-shadow: 0 0 3px rgba(139, 69, 19, 0.5);
   }
 
-  /* Performance Grid */
-  .performance-grid {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+  .clean-particle {
+    background: var(--clean-blue);
+    box-shadow: 0 0 6px rgba(0, 212, 255, 0.8);
   }
 
-  .perf-card {
+  .flow-particle:nth-child(1) { top: 2px; animation-delay: 0s; }
+  .flow-particle:nth-child(2) { top: 8px; animation-delay: 0.4s; }
+
+  .impurity-dot {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #654321;
+    border-radius: 50%;
+    top: 6px;
+    animation: flowMove 3s infinite linear;
+    animation-delay: 0.2s;
+    will-change: transform;
+  }
+
+  .shine-dot {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 50%;
+    top: 5px;
+    animation: shineMove 2s infinite linear;
+    will-change: transform;
+  }
+
+  @keyframes flowMove {
+    0% { left: -15px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 195px; opacity: 0; }
+  }
+
+  @keyframes shineMove {
+    0% { left: -8px; opacity: 0; transform: scale(0); }
+    20% { opacity: 1; transform: scale(1); }
+    80% { opacity: 1; transform: scale(1); }
+    100% { left: 188px; opacity: 0; transform: scale(0); }
+  }
+
+  .pipe-title {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--light-text);
+    font-size: 0.7rem;
+    font-weight: 500;
     text-align: center;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
+    white-space: nowrap;
   }
 
-  .perf-value {
-    font-size: 1.8rem;
+  /* Optimized Filter Chamber */
+  .filter-unit {
+    position: relative;
+    margin: 0 -15px;
+    z-index: 3;
+  }
+
+  .chamber-main {
+    width: 100px;
+    height: 120px;
+    background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--primary-blue);
+    box-shadow: 0 0 20px rgba(0, 102, 204, 0.3);
+  }
+
+  .filter-layer {
+    width: 100%;
+    height: 25%;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+  }
+
+  .filter-layer:last-child {
+    border-bottom: none;
+  }
+
+  .layer-media {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .layer-1 .layer-media { background: linear-gradient(90deg, #666 0%, #999 100%); }
+  .layer-2 .layer-media { background: linear-gradient(90deg, #444 0%, #777 100%); }
+  .layer-3 .layer-media { background: linear-gradient(90deg, #222 0%, #555 100%); }
+  .layer-4 .layer-media { background: linear-gradient(90deg, #000 0%, #333 100%); }
+
+  .clean-sweep {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.5) 50%, transparent 100%);
+    animation: sweepClean 5s infinite ease-in-out;
+    will-change: transform;
+  }
+
+  .layer-1 .clean-sweep { animation-delay: 0s; }
+  .layer-2 .clean-sweep { animation-delay: 0.6s; }
+  .layer-3 .clean-sweep { animation-delay: 1.2s; }
+  .layer-4 .clean-sweep { animation-delay: 1.8s; }
+
+  @keyframes sweepClean {
+    0%, 30% { left: -100%; }
+    50% { left: 0%; }
+    70%, 100% { left: 100%; }
+  }
+
+  .status-light {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent-cyan);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .light-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent-cyan);
+    border-radius: 50%;
+    animation: lightBlink 1.5s ease-in-out infinite;
+    will-change: opacity;
+  }
+
+  @keyframes lightBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* Optimized Stats Grid */
+  .stats-grid {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
     font-weight: 700;
-    color: #00d4ff;
+    color: var(--accent-cyan);
     margin-bottom: 0.25rem;
     font-variant-numeric: tabular-nums;
   }
 
-  .perf-unit {
+  .stat-text {
     font-size: 0.7rem;
-    color: #8892b0;
+    color: var(--gray-text);
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
-  /* Progress Area */
-  .progress-area {
+  /* Optimized Progress Section */
+  .progress-section {
     width: 100%;
-    max-width: 320px;
+    max-width: 350px;
   }
 
-  .progress-track {
+  .progress-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .progress-line {
     width: 100%;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 2px;
-    position: relative;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
     overflow: hidden;
-    margin-bottom: 1rem;
+    position: relative;
   }
 
   .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #0066cc 0%, #00d4ff 100%);
-    border-radius: 2px;
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+    border-radius: 3px;
     width: 0%;
     transition: width 0.3s ease;
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
+    will-change: width;
   }
 
-  .progress-glow {
-    position: absolute;
-    top: -2px;
-    left: 0;
-    height: 8px;
-    width: 30px;
-    background: linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.6) 50%, transparent 100%);
-    border-radius: 4px;
-    opacity: 0;
-    animation: progressGlow 2s ease-in-out infinite;
-  }
-
-  @keyframes progressGlow {
-    0%, 100% {
-      left: -30px;
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      left: 100%;
-      opacity: 0;
-    }
-  }
-
-  .status-row {
+  .progress-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .status-message {
-    font-size: 0.9rem;
-    color: #ccd6f6;
+  .status-text {
+    color: var(--light-text);
+    font-size: 0.85rem;
     font-weight: 400;
   }
 
-  .status-percent {
-    font-size: 0.9rem;
-    color: #00d4ff;
+  .percent-text {
+    color: var(--accent-cyan);
+    font-size: 0.85rem;
     font-weight: 600;
     font-variant-numeric: tabular-nums;
   }
 
-  /* Responsive Design */
+  /* Mobile Optimizations */
   @media (max-width: 768px) {
-    .loader-content {
-      gap: 2.5rem;
-      padding: 1.5rem;
+    .purifier-container {
+      gap: 1.5rem;
+      padding: 0.8rem;
     }
 
-    .brand-title {
-      font-size: 2rem;
+    .company-name {
+      font-size: 1.8rem;
     }
 
-    .brand-subtitle {
-      font-size: 0.9rem;
-    }
-
-    .logo-symbol {
-      width: 60px;
-      height: 60px;
-    }
-
-    .flow-container {
+    .purify-system {
       flex-direction: column;
-      gap: 2rem;
-      margin-bottom: 2rem;
+      gap: 1rem;
+      align-items: center;
+      max-width: 100%;
     }
 
-    .stream-line {
-      width: 200px;
-      transform: rotate(90deg);
+    .pipe-main {
+      width: 150px;
+      height: 30px;
     }
 
-    .core-outer {
-      width: 80px;
-      height: 80px;
-    }
-
-    .core-inner {
-      width: 55px;
-      height: 55px;
-    }
-
-    .processing-waves {
-      width: 100px;
+    .chamber-main {
+      width: 85px;
       height: 100px;
     }
 
-    .performance-grid {
+    .stats-grid {
       gap: 1.5rem;
     }
 
-    .perf-value {
-      font-size: 1.5rem;
+    .stat-number {
+      font-size: 1.3rem;
     }
 
-    /* Optimize animations for mobile */
-    .wave {
-      animation-duration: 4s;
+    /* Reduce animations on mobile */
+    .bubble {
+      animation-duration: 20s;
     }
 
-    .dropFlow {
-      animation-duration: 4s;
+    .clean-sweep {
+      animation-duration: 6s;
     }
   }
 
   @media (max-width: 480px) {
-    .loader-content {
-      gap: 2rem;
-      padding: 1rem;
+    .purifier-container {
+      gap: 1.2rem;
+      padding: 0.6rem;
     }
 
-    .brand-title {
-      font-size: 1.8rem;
+    .company-name {
+      font-size: 1.5rem;
     }
 
-    .logo-symbol {
-      width: 50px;
-      height: 50px;
+    .company-tagline {
+      font-size: 0.7rem;
     }
 
-    .stream-line {
-      width: 150px;
+    .pipe-main {
+      width: 130px;
+      height: 25px;
     }
 
-    .performance-grid {
-      gap: 1rem;
+    .chamber-main {
+      width: 70px;
+      height: 85px;
     }
 
-    .perf-card {
-      padding: 0.8rem;
+    .stats-grid {
+      gap: 1.2rem;
     }
 
-    .perf-value {
-      font-size: 1.3rem;
+    .stat-number {
+      font-size: 1.1rem;
     }
 
-    .perf-unit {
+    .stat-text {
       font-size: 0.65rem;
+    }
+
+    .pipe-title {
+      font-size: 0.65rem;
+      top: -22px;
+    }
+
+    .status-light {
+      font-size: 0.7rem;
+      top: -30px;
+    }
+
+    /* Further reduce animations on small screens */
+    .bubble {
+      animation-duration: 25s;
     }
   }
 
   /* Performance optimizations */
   @media (prefers-reduced-motion: reduce) {
-    * {
+    .bubble,
+    .drop-inner,
+    .flow-particle,
+    .impurity-dot,
+    .shine-dot,
+    .clean-sweep,
+    .light-dot {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
     }
@@ -644,141 +626,140 @@
 </style>
 
 <script>
-  class ModernWaterLoader {
+  class OptimizedPurifierLoader {
     constructor() {
       this.progress = 0;
       this.targetProgress = 100;
       this.isActive = true;
-      this.statusMessages = [
-        "Initializing system",
-        "Analyzing water quality",
-        "Activating filters",
-        "Optimizing flow rate",
-        "System ready"
+      this.messages = [
+        "Initializing Purification System",
+        "Activating Multi-Stage Filters", 
+        "Processing Water Quality",
+        "Optimizing Flow Rate",
+        "Finalizing Purification Process"
       ];
-      this.currentStatus = 0;
+      this.currentMsg = 0;
       
-      this.start();
+      this.initialize();
     }
 
-    start() {
+    initialize() {
+      // Use requestAnimationFrame for better performance
       requestAnimationFrame(() => {
         this.animateProgress();
-        this.animateMetrics();
-        this.rotateStatus();
-        this.scheduleCompletion();
+        this.animateStats();
+        this.rotateMessages();
+        this.scheduleHide();
       });
     }
 
     animateProgress() {
-      const progressFill = document.querySelector('.progress-fill');
-      const progressPercent = document.querySelector('.status-percent');
-      const progressGlow = document.querySelector('.progress-glow');
+      const progressBar = document.querySelector('.progress-fill');
+      const percentText = document.querySelector('.percent-text');
       
-      if (!progressFill || !progressPercent) return;
-
+      if (!progressBar || !percentText) return;
+      
       const updateProgress = () => {
         if (this.progress < this.targetProgress && this.isActive) {
-          this.progress += Math.random() * 2 + 1;
+          this.progress += Math.random() * 2.5 + 0.8;
           this.progress = Math.min(this.progress, this.targetProgress);
           
-          progressFill.style.width = `${this.progress}%`;
-          progressPercent.textContent = `${Math.floor(this.progress)}%`;
-          
-          if (this.progress > 15 && progressGlow) {
-            progressGlow.style.animationPlayState = 'running';
-          }
+          progressBar.style.width = `${this.progress}%`;
+          percentText.textContent = `${Math.floor(this.progress)}%`;
           
           requestAnimationFrame(updateProgress);
         }
       };
       
-      setTimeout(() => requestAnimationFrame(updateProgress), 200);
+      setTimeout(() => requestAnimationFrame(updateProgress), 300);
     }
 
-    animateMetrics() {
-      const perfValues = document.querySelectorAll('.perf-value');
+    animateStats() {
+      const statNumbers = document.querySelectorAll('.stat-number');
       
-      perfValues.forEach((value, index) => {
-        const target = parseFloat(value.dataset.target);
+      statNumbers.forEach((stat, index) => {
+        const target = parseFloat(stat.dataset.target);
         let current = 0;
         
-        const updateValue = () => {
+        const updateStat = () => {
           if (current < target && this.isActive) {
-            const increment = target / 45;
+            const increment = target / 40;
             current += increment;
             current = Math.min(current, target);
             
-            if (index === 0 || index === 2) {
-              value.textContent = current.toFixed(1);
+            if (index === 0) {
+              stat.textContent = current.toFixed(1);
             } else {
-              value.textContent = Math.floor(current);
+              stat.textContent = Math.floor(current);
             }
             
-            requestAnimationFrame(updateValue);
+            requestAnimationFrame(updateStat);
           }
         };
         
-        setTimeout(() => requestAnimationFrame(updateValue), 600 + index * 300);
+        setTimeout(() => requestAnimationFrame(updateStat), 800 + index * 400);
       });
     }
 
-    rotateStatus() {
-      const statusMessage = document.querySelector('.status-message');
-      if (!statusMessage) return;
-
-      const changeStatus = () => {
-        if (this.isActive && this.currentStatus < this.statusMessages.length - 1) {
-          statusMessage.style.opacity = '0';
+    rotateMessages() {
+      const statusText = document.querySelector('.status-text');
+      if (!statusText) return;
+      
+      const changeMessage = () => {
+        if (this.isActive) {
+          statusText.style.opacity = '0';
           
           setTimeout(() => {
-            this.currentStatus++;
-            statusMessage.textContent = this.statusMessages[this.currentStatus];
-            statusMessage.style.opacity = '1';
-          }, 150);
+            this.currentMsg = (this.currentMsg + 1) % this.messages.length;
+            statusText.textContent = this.messages[this.currentMsg];
+            statusText.style.opacity = '1';
+          }, 200);
           
-          setTimeout(changeStatus, 1200);
+          setTimeout(changeMessage, 1800);
         }
       };
       
-      setTimeout(changeStatus, 1000);
+      setTimeout(changeMessage, 1500);
     }
 
-    scheduleCompletion() {
+    scheduleHide() {
       setTimeout(() => {
-        this.complete();
-      }, 5000);
+        this.hideLoader();
+      }, 5500);
     }
 
-    complete() {
+    hideLoader() {
       this.isActive = false;
-      const loader = document.getElementById('waterLoader');
+      const loader = document.getElementById('purifierLoader');
       
       if (loader) {
         loader.style.opacity = '0';
-        loader.style.transition = 'opacity 0.5s ease-out';
+        loader.style.transition = 'opacity 0.6s ease-out';
         
         setTimeout(() => {
           loader.style.display = 'none';
+          // Clean up for memory
           loader.remove();
-        }, 500);
+        }, 600);
       }
     }
   }
 
-  // Initialize loader
-  function initModernLoader() {
+  // Initialize with better error handling
+  function initPurifierLoader() {
     try {
-      const loader = new ModernWaterLoader();
-      window.hideWaterLoader = () => loader.complete();
+      const loader = new OptimizedPurifierLoader();
+      // Export for manual control
+      window.hidePurifierLoader = () => loader.hideLoader();
     } catch (error) {
-      console.warn('Water loader initialization failed:', error);
+      console.warn('Purifier loader initialization failed:', error);
     }
   }
 
+  // Initialize when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initModernLoader);
+    document.addEventListener('DOMContentLoaded', initPurifierLoader);
   } else {
-    initModernLoader();
+    initPurifierLoader();
   }
 </script>
